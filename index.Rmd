@@ -1,0 +1,34 @@
+---
+title: "Shiny apps and aiR quality"
+subtitle: "EARL 2021" 
+author: "Adithi R. Upadhya"
+institute: "ILK Labs"
+date: "6th July, 2021"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      titleSlideClass: [center, middle]
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+xaringanExtra::use_tile_view()
+
+```
+
+# Hello!
+
+My name is Adithi, and I am a Geospatial Data Analyst at ILK Labs in Bengaluru, India and this is my first EARL conference. I use R to work with air quality data. Today, I will present about how I used shiny to build tools to provide a workflow to analyse air quality data.
+
+---
+
+# Who we are?
+
+![Multidisciplinary team](img/team.png)
+
+---
+

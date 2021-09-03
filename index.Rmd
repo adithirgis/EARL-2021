@@ -3,7 +3,7 @@ title: "Shiny apps and aiR quality"
 subtitle: "EARL 2021" 
 author: "Adithi R. Upadhya"
 institute: "ILK Labs"
-date: "6th July, 2021"
+date: "10 September, 2021"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -73,81 +73,98 @@ Shiny apps are user friendly, so team members across continents can use the appl
 
 Another added benefit is having a vibrant and supportive community using R. Both these applications have pre-loaded datasets to work around. 
 
+---
+# 2 types of Air Quality Measurements
+.left-column[
 
+###Staionary monitoring
+![Stationary reference grade monitor](WWW/SM.png)
+
+]
+
+--
+
+.right-column[
+###Mobile monitoring
+![Sensors in a car](img/google-street-view.png)
+]
+???
+Typically, we have two main types of air quality measurements. 
 
 ---
-class: center
+# Stationary Monitoring
 
-# Mobile Monitoring 
-
-![MM_paper](WWW/MM.png)
-
-.center[Apte et. al(2017)]
+![Network of air quality sensors in Bangalore, India](img/pa.png)
 
 ???
-
-The first shiny application is called "mmaqshiny" which helps in processing high resolution air quality data collected on a moving platform usually called mobile monitoring. 
-
-So we take multiple sensors in a car, and take repeated measurements of each road in an area to generate stable high resolution air pollutant maps (usually daily maps are generated). 
-
-There is superior performance in estimating long-term mean concentrations when multiple repeated drives are possible.
-
+This is what stationary monitoring network looks like. Multiple sensors recording data at real time ~ 1 min frequency. Gives information about trends at the city scale
 ---
 
-class: center
-
-# [mmaqshiny](https://aruapps.shinyapps.io/mmaqshiny/)
-
-
-```{r out.width = "800px", echo = FALSE}
-
-knitr::include_graphics("WWW/mmaqshiny_app.png")
-
-```
+# Mobile Monitoring
+![Individual instruments for each parameter](img/setup.png)
 
 ???
-
-This is how mmaqshiny looks like. 
+For a neighborhood level measurement, we use mobile monitoring. This schematic shows the many instruments that go in the mobile platform. You can imagine the complexity, diff instruments, have different download methods, from the point of view of analysis - different data formats, different time stamps, etc. 
 
 ---
+.left-column[
+###This is what it looks like in practise
 
-# mmaqshiny
-```{r out.width = "100px", echo = FALSE}
 
-knitr::include_graphics("WWW/mmaqshiny.png")
 
-```
+   
+]
 
-- Handles high frequency data (~ 1 Hz)
+.right-column[
+![Internal set up in the mobile monitoring platform](img/cng.jpg)
 
-- Visualise air pollution hot spots
+]
+???
+We are looking at the inside of the car now. We have a laptop as a logger for some instruments. And all insruments are secured in the blue tray with inlets outside the vehicle. This is what looks like in pracise,... 
+---
+.left-column[
+###and, sometimes like this...
+]
 
-- Pre-processes for various instrumental sensitivities
+.right-column[
+![Unplanned and unanticipated road blocks](img/challenges.jpg)
 
-- Joins output files from different instruments
 
-- Reduces computational labour
+]
 
-- Alarms user on instrumental errors
+???
+All that to say that many times, things are out of our control in the field. 
+Next, 
 
-- Near real time quality check of the data (usually after the ride)
+---
+.left-column[
+#Data Cleaning
+![](img/tidyverse_logo.png)
 
+]
+.right-column[
+![](img/tidyverse.png)
+
+]
+???
+We use all tidyverse packages for data cleaning. Ggplot for highly flexible plotting, purrr and map functions for more efficient and faster code instead of for loops, and forcats for functions. Readr, read_csv automatically parses date-time objects, that is is very helpful
+---
+# Consistent timestamps with `lubridate`
+.left-column[
+![](img/lubridate.jpeg)
+
+]
+.right-column[
+Data from different instruments often have different...
+![](img/data_issues.png)
+
+- Parsing date-times with `ymd_hms()`, `dmy_hms()`...
+- Assigning time zone with `with_tz()`
+]
 
 
 ???
-
-mmaqshiny can handle data of the order 1000's every day from each of the instrument, we had nearly 5 instruments for this study. 
-
-It reduces the time consumed for analysing each pollutant individually, helps in visualising the data collected on field each day, it can also be used to look for pollution hotspots, locations that are relatively more polluted than neighboring areas. 
-
-Each pollutant or sensor data requires specific kind of pre-processing which depends on the principle on which it operates or its mechanical setup. Eventually, it joins different instrument data into one single corrected file.
-
-
-This really helps us in achieving the unit of analysis for the rest of the study. 
-
-This application has reduced computational labour. Since mobile data contains a huge amount of spatial data, GPS data file is mandatory but other files from different instruments are not necessary. 
-
-Since Alarm tab is also present in the application, it helps the user to give a near real-time check on the health of all the instruments used. This application is available as a package on CRAN.  
+Step 1 is consistent time stamps so that we can join all data sets together. Some instruments are either in UTC time zone, or depending on the country of origin in a diff time zone. 
 
 
 ---
@@ -221,33 +238,74 @@ This is made into a package and will be on its way to CRAN soon. Don't forget to
 
 ---
 
-# R packages!
+class: center
 
-- `shiny`!! 
+# [mmaqshiny](https://aruapps.shinyapps.io/mmaqshiny/)
 
-- Tidying the data: `tidyverse`
 
-- Manipulating timestamps: `lubridate`
+```{r out.width = "800px", echo = FALSE}
 
-- Joining the file using mutating joins
+knitr::include_graphics("WWW/mmaqshiny_app.png")
 
-- `openair`
+```
 
-- and many more.....
+???
+
+This is how mmaqshiny looks like. 
+
+The first shiny application is called "mmaqshiny" which helps in processing high resolution air quality data collected on a moving platform usually called mobile monitoring. 
+
+So we take multiple sensors in a car, and take repeated measurements of each road in an area to generate stable high resolution air pollutant maps (usually daily maps are generated). 
+
+There is superior performance in estimating long-term mean concentrations when multiple repeated drives are possible.
+
+---
+
+# mmaqshiny
+```{r out.width = "100px", echo = FALSE}
+
+knitr::include_graphics("WWW/mmaqshiny.png")
+
+```
+
+- Handles high frequency data (~ 1 Hz)
+
+- Visualise air pollution hot spots
+
+- Pre-processes for various instrumental sensitivities
+
+- Joins output files from different instruments
+
+- Reduces computational labour
+
+- Alarms user on instrumental errors
+
+- Near real time quality check of the data (usually after the ride)
+
 
 
 ???
 
-A huge shout out to all the packages which made these applications possible. 
-Manipulating different timestamp has been the most challenging part since there are different time stamp format and the multiple timezones. 
+mmaqshiny can handle data of the order 1000's every day from each of the instrument, we had nearly 5 instruments for this study. 
 
-Integrating a number of instruments has also been a task, joining all files together to make a single file saves a lot of time for further analysis. 
+It reduces the time consumed for analysing each pollutant individually, helps in visualising the data collected on field each day, it can also be used to look for pollution hotspots, locations that are relatively more polluted than neighboring areas. 
 
-Tidyverse, I guess is a must in all data analysis. 
+Each pollutant or sensor data requires specific kind of pre-processing which depends on the principle on which it operates or its mechanical setup. Eventually, it joins different instrument data into one single corrected file.
+
+
+This really helps us in achieving the unit of analysis for the rest of the study. 
+
+This application has reduced computational labour. Since mobile data contains a huge amount of spatial data, GPS data file is mandatory but other files from different instruments are not necessary. 
+
+Since Alarm tab is also present in the application, it helps the user to give a near real-time check on the health of all the instruments used. This application is available as a package on CRAN.  
+
+
 
 ---
 
 ## Thank you and to know more or to provide feedback find me - 
+
+Website - [Adithi R. Upadhya](https://adithirugis.rbind.io/)
 
 Email - [adithi@ilklabs.com](adithi@ilklabs.com)
 
@@ -257,6 +315,6 @@ Twitter - [@AdithiUpadhya](https://twitter.com/AdithiUpadhya)
 
 ???
 
-Please let me know if you all have any further questions. I am also available in the Lounge if you want to discuss. Have a great day ahead! Enjoy useR!
+Please let me know if you all have any further questions. I am also available in the Lounge if you want to discuss. Have a great day ahead! Enjoy EARL!
 
 

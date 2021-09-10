@@ -14,25 +14,25 @@ output:
       titleSlideClass: [center, middle]
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include = FALSE}
 options(htmltools.dir.version = FALSE)
 xaringanExtra::use_tile_view()
 
 ```
 
-# Hello!
+# Hi!
 
-My name is Adithi, and I am a Geospatial Data Analyst at ILK Labs in Bengaluru, India and this is my first EARL conference. I use R to work with air quality data. Today, I will present about how I used shiny to build tools to provide a workflow to analyse air quality data.
+My name is Adithi, and I am a Geospatial Data Analyst at ILK Labs in Bengaluru, India. I will now be presenting about how I use shiny to build tools to provide a workflow to analyse air quality data. 
 
 ---
 
-# Who we are?
+# How do we look?
 
 ![Multidisciplinary team](img/team.png)
 
 ---
 
-# R in the aiR!
+# R, R everywhere!
 
 ```{r out.width = "100px", echo = FALSE}
 
@@ -40,9 +40,11 @@ knitr::include_graphics("WWW/R.png")
 
 ```
 
-- R and shiny are a powerful combination to work hands-on air quality data. 
+- R and shiny are a powerful combination. 
 
-- The amount of data being collected is huge and necessitates the use of management platforms. 
+- With the ever increasing global measurements of air pollutants (through stationary, mobile, low-cost, and satellite monitoring) it has become necessary to use management platforms.
+
+- So here we present two shiny applications.
 
 
 ???
@@ -56,14 +58,13 @@ With the ever increasing global measurements of air pollutants (through stationa
 In an effort to address this issue, we developed two Shiny applications to analyse and visualise air quality data.
 
 --- 
+# Why shiny? 
 
-# Necessity is the mother of Invention 
+- Shiny apps can be deployed
 
-- Apps can be deployed
+- The user needs no programming knowledge
 
-- No programming knowledge required
-
-- Help is always around
+- Help available
 
 ???
 
@@ -94,7 +95,7 @@ Typically, we have two main types of air quality measurements.
 ---
 # Stationary Monitoring
 
-![Network of air quality sensors in Bangalore, India](img/pa.png)
+![Network of air quality sensors in Begaluru, India](img/pa.png)
 
 ???
 This is what stationary monitoring network looks like. Multiple sensors recording data at real time ~ 1 min frequency. Gives information about trends at the city scale
@@ -108,11 +109,9 @@ For a neighborhood level measurement, we use mobile monitoring. This schematic s
 
 ---
 .left-column[
-###This is what it looks like in practise
+###Our set-up in Bengaluru, India
 
 
-
-   
 ]
 
 .right-column[
@@ -123,7 +122,7 @@ For a neighborhood level measurement, we use mobile monitoring. This schematic s
 We are looking at the inside of the car now. We have a laptop as a logger for some instruments. And all insruments are secured in the blue tray with inlets outside the vehicle. This is what looks like in pracise,... 
 ---
 .left-column[
-###and, sometimes like this...
+###but sometimes our ride is unplanned...
 ]
 
 .right-column[
@@ -134,11 +133,24 @@ We are looking at the inside of the car now. We have a laptop as a logger for so
 
 ???
 All that to say that many times, things are out of our control in the field. 
-Next, 
+
+---
+# Our next step
+
+- Build an app to make public use the open source air quality data available and think about science. 
+
+- Build another app which helps team at ILK to perform quality checks to the high frequency data. 
+
+
+
+???
+Once we saw that stationary monitors can sometimes need cleaning and also the freely available data was for public use. To facilitate public use why not try to make an app which navigates a user to use the open source air quality data easily and think about science. 
+
+And we at ILK Labs we waiting to understand how to perform quality checks on the high dimensional data we were collecting everyday. 
 
 ---
 .left-column[
-#Data Cleaning
+#Data Cleaning - Important!!!
 ![](img/tidyverse_logo.png)
 
 ]
@@ -149,13 +161,13 @@ Next,
 ???
 We use all tidyverse packages for data cleaning. Ggplot for highly flexible plotting, purrr and map functions for more efficient and faster code instead of for loops, and forcats for functions. Readr, read_csv automatically parses date-time objects, that is is very helpful
 ---
-# Consistent timestamps with `lubridate`
+# Working with datetime using `lubridate`
 .left-column[
 ![](img/lubridate.jpeg)
 
 ]
 .right-column[
-Data from different instruments often have different...
+Date for different instruments can have different
 ![](img/data_issues.png)
 
 - Parsing date-times with `ymd_hms()`, `dmy_hms()`...
@@ -170,7 +182,7 @@ Step 1 is consistent time stamps so that we can join all data sets together. Som
 ---
 class: center
 
-# Stationary Monitoring 
+# Stationary Monitoring - pollucheck
 
 ```{r out.width = "200px", echo = FALSE}
 
@@ -178,7 +190,7 @@ knitr::include_graphics("WWW/SM.png")
 
 ```
 
-.center[CSTEP, Bangalore, India]
+.center[CSTEP, Begaluru, India]
 
 ???
 
@@ -234,7 +246,22 @@ It can implement linear or multilinear regression. pollucheck allows users to up
 
 It also implements two plots from the openair package. 
 
-This is made into a package and will be on its way to CRAN soon. Don't forget to check out air quality of your city using our application! 
+This is made into a package. Don't forget to check out air quality of your city using our application! 
+
+---
+
+class: center
+
+# Mobile Monitoring - mmaqshiny
+
+```{r out.width = "400px", echo = FALSE}
+
+knitr::include_graphics("img/google-street-view.png")
+
+```
+
+.center[Google Street View car]
+
 
 ---
 
@@ -270,9 +297,13 @@ knitr::include_graphics("WWW/mmaqshiny.png")
 
 - Handles high frequency data (~ 1 Hz)
 
+- Only mandatory file is GPS and multiple inputs possible
+
 - Visualise air pollution hot spots
 
 - Pre-processes for various instrumental sensitivities
+
+- Provides unit of analysis for further study
 
 - Joins output files from different instruments
 
@@ -299,22 +330,66 @@ This application has reduced computational labour. Since mobile data contains a 
 
 Since Alarm tab is also present in the application, it helps the user to give a near real-time check on the health of all the instruments used. This application is available as a package on CRAN.  
 
+---
+background-image: url(img/image-from-rawpixel-id-430321-jpeg.jpg)
+background-size: cover
+# What next?
+.pull-left[
 
+- Bookdown project
+  - Organizing field protocols and code
+
+- Tidymodels
+
+- Accessibility
+
+]
 
 ---
+# Resources used
+.pull-left[
+- R packages
+  - [xaringan](https://github.com/yihui/xaringan)
+  - [xaringanextra](https://github.com/gadenbuie/xaringanExtra)
+  
+- Images from [rawpixel](https://www.rawpixel.com/)
 
-## Thank you and to know more or to provide feedback find me - 
+- Logos from [The Noun Project](https://thenounproject.com/)
+]
 
-Website - [Adithi R. Upadhya](https://adithirugis.rbind.io/)
+---
+# Research Partners
+![](img/research partners.png)
 
-Email - [adithi@ilklabs.com](adithi@ilklabs.com)
+---
+ 
+![](img/Team_ILK.PNG)
 
-GitHub - [@adithirgis](https://github.com/adithirgis)
+---
+.left-column[
 
-Twitter - [@AdithiUpadhya](https://twitter.com/AdithiUpadhya)
+##Thank You everyone and EARL 2021!
+
+Website:
+[Adithi R. Upadhya](https://adithirugis.rbind.io/)
+
+Twitter:  
+[AdithiUpadhya](https://twitter.com/AdithiUpadhya)
+
+Github:
+[@adithirgis](https://github.com/adithirgis)
+
+Email:
+[adithi@ilklabs.com]()
+
+]
+
+.right-column[
+![](img/code_hero.jpg)
+]
 
 ???
-
 Please let me know if you all have any further questions. I am also available in the Lounge if you want to discuss. Have a great day ahead! Enjoy EARL!
+
 
 

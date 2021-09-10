@@ -26,7 +26,7 @@ My name is Adithi, and I am a Geospatial Data Analyst at ILK Labs in Bengaluru, 
 
 ---
 
-# Who all R?
+# Who all R there?
 
 ![Multidisciplinary team](img/team.png)
 
@@ -55,9 +55,9 @@ With the ever increasing global measurements of air pollutants (through stationa
 In an effort to address this issue, we developed two Shiny applications to analyse and visualise air quality data.
 
 ---
-# Why shiny apps
+# Why shiny apps?
 
-- Shiny apps can be deployed
+- Shiny apps can be deployed 
 
 - The user needs no programming knowledge
 

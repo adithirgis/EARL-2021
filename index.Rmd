@@ -318,19 +318,12 @@ This application has reduced computational labour. Since mobile data contains a 
 Since Alarm tab is also present in the application, it helps the user to give a near real-time check on the health of all the instruments used. This application is available as a package on CRAN.  
 
 ---
-background-image: url(img/image-from-rawpixel-id-430321-jpeg.jpg)
-background-size: cover
-# What next?
-.pull-left[
+# Coming up next
 
-- Bookdown project
-  - Organizing field protocols and code
+- Working with models for low cost sensor data
 
-- Tidymodels
+- Working with satellite images 
 
-- Accessibility
-
-]
 
 ---
 # Resources used
@@ -344,9 +337,6 @@ background-size: cover
 - Logos from [The Noun Project](https://thenounproject.com/)
 ]
 
----
-# Research Partners
-![](img/research partners.png)
 
 ---
  

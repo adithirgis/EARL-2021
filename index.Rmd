@@ -32,7 +32,7 @@ My name is Adithi, and I am a Geospatial Data Analyst at ILK Labs in Bengaluru, 
 
 ---
 
-# R, R everywhere!
+# R and shiny everywhere!
 
 ```{r out.width = "100px", echo = FALSE}
 
@@ -48,31 +48,20 @@ knitr::include_graphics("WWW/R.png")
 
 
 ???
-
-R in the air! 
-
 R and shiny are a powerful couple which can be used to build interactive platforms to manage and work with the data collected.
 
 With the ever increasing global measurements of air pollutants (through stationary, mobile, low-cost, and satellite monitoring), the amount of data being collected is huge and it necessitates the use of management platforms.
 
 In an effort to address this issue, we developed two Shiny applications to analyse and visualise air quality data.
 
---- 
-# Why shiny? 
+---
+# Why shiny apps
 
 - Shiny apps can be deployed
 
 - The user needs no programming knowledge
 
 - Help available
-
-???
-
-As they say - necessity is the mother of invention. We, at ILK Labs always wanted to work with high dimensional data and talk air quality, to make it possible we designed and developed two applications.
-
-Shiny apps are user friendly, so team members across continents can use the applications without any prior knowledge of programming. 
-
-Another added benefit is having a vibrant and supportive community using R. Both these applications have pre-loaded datasets to work around. 
 
 ---
 # 2 types of Air Quality Measurements
@@ -119,10 +108,10 @@ For a neighborhood level measurement, we use mobile monitoring. This schematic s
 
 ]
 ???
-We are looking at the inside of the car now. We have a laptop as a logger for some instruments. And all insruments are secured in the blue tray with inlets outside the vehicle. This is what looks like in pracise,... 
+We are looking at the inside of the car now. We have a laptop as a logger for some instruments. And all instruments are secured in the blue tray with inlets outside the vehicle. This is what looks like in practise.
 ---
 .left-column[
-###but sometimes our ride is unplanned...
+###but sometimes our ride is unexpected
 ]
 
 .right-column[
@@ -140,8 +129,6 @@ All that to say that many times, things are out of our control in the field.
 - Build an app to make public use the open source air quality data available and think about science. 
 
 - Build another app which helps team at ILK to perform quality checks to the high frequency data. 
-
-
 
 ???
 Once we saw that stationary monitors can sometimes need cleaning and also the freely available data was for public use. To facilitate public use why not try to make an app which navigates a user to use the open source air quality data easily and think about science. 

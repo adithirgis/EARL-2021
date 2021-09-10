@@ -204,7 +204,7 @@ This is how pollucheck looks like.
 
 ---
 
-# pollucheck
+# [pollucheck](https://github.com/adithirgis/pollucheck)
 ```{r out.width = "100px", echo = FALSE}
 
 knitr::include_graphics("WWW/PolluCheck.png")
@@ -275,7 +275,7 @@ There is superior performance in estimating long-term mean concentrations when m
 
 ---
 
-# mmaqshiny
+# [mmaqshiny](https://github.com/meenakshi-kushwaha/mmaqshiny)
 ```{r out.width = "100px", echo = FALSE}
 
 knitr::include_graphics("WWW/mmaqshiny.png")

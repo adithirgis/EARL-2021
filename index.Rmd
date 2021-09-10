@@ -26,13 +26,13 @@ My name is Adithi, and I am a Geospatial Data Analyst at ILK Labs in Bengaluru, 
 
 ---
 
-# How do we look?
+# Who all R?
 
 ![Multidisciplinary team](img/team.png)
 
 ---
 
-# R and shiny everywhere!
+# R, shiny everywhere!
 
 ```{r out.width = "100px", echo = FALSE}
 
